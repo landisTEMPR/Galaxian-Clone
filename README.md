@@ -1,83 +1,149 @@
 # Galaxian Clone
 
-A lightweight C++/SDL2 remake of the classic Galaxian arcade shooter.  
-Designed with a clean architecture, predictable game-loop timing, and extendable components.
+A modern C++ recreation of the classic arcade game **Galaxian**, built using **SDL2** and **SDL2_gfx**.  
+This project demonstrates sprite rendering, sound playback, animation, collision handling, and state-based game flow.
+
+---
 
 ## Features
 
-- Player ship movement and firing
-- Enemy formations with swooping attack patterns
-- Collision detection for bullets and enemies
-- Sprite rendering and basic animations
-- Wave progression system
-- Configurable FPS locking
+- Player ship movement and shooting
+- Enemy movement patterns
+- Sprite rendering with SDL2
+- Background starfield animation
+- Sound effects and game loop music
+- Menu system
+- Modular component-based code structure
 
-## Technology
-
-- C++17+
-- SDL2
-- CMake
-- PNG spritesheets and simple SFX
+---
 
 ## Project Structure
 
+The structure below reflects the current repository layout:
+
 ```
-/src
-    main.cpp
-    Game.cpp / Game.hpp
-    Player.cpp / Player.hpp
-    Enemy.cpp / Enemy.hpp
-    EnemyFormation.cpp / EnemyFormation.hpp
-    Bullet.cpp / Bullet.hpp
-    Renderer.cpp / Renderer.hpp
-    AssetLoader.cpp / AssetLoader.hpp
-/assets
-    sprites/
-    sounds/
-/build
-CMakeLists.txt
-README.md
+Galaxian/
+├── a.out
+├── CON
+├── fonts/
+│   ├── FreeMono.ttf
+│   ├── FreeMonoBold.ttf
+│   ├── FreeMonoOblique.ttf
+│   ├── FreeMonoBoldOblique.ttf
+│   ├── FreeSans.ttf
+│   ├── FreeSansBold.ttf
+│   ├── FreeSansOblique.ttf
+│   ├── FreeSansBoldOblique.ttf
+│   ├── FreeSerif.ttf
+│   ├── FreeSerifBold.ttf
+│   ├── FreeSerifItalic.ttf
+│   └── FreeSerifBoldItalic.ttf
+│
+├── images/
+│   └── galaxian/
+│
+├── includes/
+│   ├── Color.h
+│   ├── Color.h~
+│   ├── compgeom.h
+│   ├── Constants.h
+│   ├── Event.h
+│   ├── Font.h
+│   ├── Font.h~
+│   ├── Image.h
+│   ├── Image.h~
+│   ├── Includes.h
+│   ├── main.cpp
+│   ├── Menu.h
+│   ├── Rect.h
+│   ├── Rect.h~
+│   ├── SDL_gfxPrimitives.h
+│   ├── SDL_gfxPrimitives_font.h
+│   ├── SingletonSurface.h
+│   ├── Sound.h
+│   ├── Star.h
+│   ├── StarField.h
+│   ├── Surface.h
+│   ├── Surface.h~
+│   ├── TextSurface.h
+│   └── TextSurface.h~
+│
+├── main.cpp
+├── main.cpp~
+├── main.pdf
+├── makefile
+├── makefile~
+│
+├── sounds/
+│   ├── explosion.wav
+│   ├── GameLoop.ogg
+│   └── laser.wav
+│
+└── src/
+    ├── Image.cpp
+    ├── Menu.cpp
+    ├── SDL_gfxPrimitives.c
+    ├── SingletonSurface.cpp
+    ├── StarField.cpp
+    ├── Surface.cpp
+    └── Surface.cpp~
 ```
+
+---
 
 ## Build Instructions
 
-### Prerequisites
-- C++17 compatible compiler
-- SDL2 development libraries
-- CMake 3.10+
+### Requirements
 
-### Steps
+Install SDL2 and SDL2_gfx:
+
+#### Fedora / RHEL
 ```bash
-mkdir build
-cd build
-cmake ..
+sudo dnf install SDL2 SDL2-devel SDL2_gfx SDL2_gfx-devel SDL2_mixer SDL2_mixer-devel
+```
+
+#### Ubuntu / Debian
+```bash
+sudo apt install libsdl2-dev libsdl2-mixer-dev libsdl2-gfx-dev
+```
+
+---
+
+### Compile
+
+In the project root:
+
+```bash
 make
 ```
 
-### Run
+Or manually:
+
+```bash
+g++ main.cpp src/*.cpp -Iincludes -lSDL2 -lSDL2_mixer -lSDL2_gfx -o galaxian
+```
+
+---
+
+## Run the Game
+
 ```bash
 ./galaxian
 ```
 
+---
+
 ## Controls
 
-| Action       | Key                |
-|--------------|--------------------|
-| Move Left    | Left Arrow / A     |
-| Move Right   | Right Arrow / D    |
-| Fire         | Space              |
-| Quit         | Esc                |
+| Action | Key |
+|--------|------|
+| Move Left | Left Arrow |
+| Move Right | Right Arrow |
+| Shoot | Spacebar |
+| Quit | Escape |
 
-## Known Limitations
+---
 
-- Enemy AI simplified vs. original arcade implementation
-- Basic sound handling
+## License
 
-## Roadmap
-
-- High score saving
-- Menu + settings UI
-- More accurate enemy behavior
-- Explosion animations and particles
-- WebAssembly or SDL3 port
-
+This project is for educational and recreational use.
